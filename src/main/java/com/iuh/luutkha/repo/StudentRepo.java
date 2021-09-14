@@ -10,17 +10,21 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.iuh.luutkha.entity.Student;
+
+import antlr.collections.List;
 @Repository
 public interface StudentRepo extends JpaRepository<User, Integer> {
-	@Query("SELECT s FROM students s")
-	Collection<Student> findAllStudents();
-
-	@Modifying
-	@Query(value = "delete from students s where s.name= :name", nativeQuery = true)
-	void deleteStudentsByName(@Param("name") String name);
-
-	@Modifying
-	@Query(value = "update students set name= :name where id = :id", nativeQuery = true)
-	void updateStudentName(String name, Integer id);
+//	@Query("SELECT s FROM students s")
+//	Collection<Student> findAllStudents();
+//
+//	@Modifying
+//	@Query(value = "delete from students s where s.name= :name", nativeQuery = true)
+//	void deleteStudentsByName(@Param("name") String name);
+//
+//	@Modifying
+//	@Query(value = "update students set name= :name where id = :id", nativeQuery = true)
+//	void updateStudentName(String name, Integer id);
+	java.util.List<Student> findByName(String name);
+	void deleteById(Integer id);
 
 }
